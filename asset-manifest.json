@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ecommerce-test-task/static/css/main.7f213b9c.css",
+    "main.js": "/ecommerce-test-task/static/js/main.4c8bfeef.js",
+    "index.html": "/ecommerce-test-task/index.html",
+    "main.7f213b9c.css.map": "/ecommerce-test-task/static/css/main.7f213b9c.css.map",
+    "main.4c8bfeef.js.map": "/ecommerce-test-task/static/js/main.4c8bfeef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f213b9c.css",
+    "static/js/main.4c8bfeef.js"
+  ]
+}
