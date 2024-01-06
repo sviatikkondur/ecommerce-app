@@ -1,17 +1,20 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import RootComponent from './RootComponent'
-import { persistor, store } from './store/reducers/store'
+import React from 'react';
+import './styles/reset.scss';
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/organisms/Header/Header';
+import Footer from './components/organisms/Footer/Footer';
+import './App.css';
 
 const App: React.FC = () => {
-    return (
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <RootComponent />
-            </PersistGate>
-        </Provider>
-    )
-}
+  return (
+    <>
+    <Header />
+      <div className="content-container">
+        <Outlet />
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-export default App
+export default App;

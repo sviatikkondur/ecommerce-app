@@ -1,19 +1,23 @@
-import React from 'react'
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
-import { HomePage } from './pages/HomePage'
-import NotFoundPage from './pages/NotFoundPage'
-import { ROUTES } from './resources/routes-constants'
-import './styles/main.scss'
+import React from 'react';
+import {
+  Routes,
+  Route,
+  HashRouter as Router,
+  Navigate,
+} from 'react-router-dom';
+import App from './App';
+import { HomePage } from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
-const RootComponent: React.FC = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route path="*" element={<NotFoundPage />} />
-                <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
-            </Routes>
-        </Router>
-    )
-}
+export const RootComponent: React.FC = () => (
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
 
-export default RootComponent
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Router>
+);

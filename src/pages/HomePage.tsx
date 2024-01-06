@@ -1,7 +1,11 @@
+import { Container, Typography } from '@mui/material'
 import React from 'react'
 
 export const HomePage: React.FC = () => {
     return (
-        <h1>Hello</h1>
+      <Container>
+        <Typography variant="h1">Main Content Goes Here</Typography>
+      </Container>
+        
     )
 }
