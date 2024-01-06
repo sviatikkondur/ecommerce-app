@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
       <AppBar 
         position="static" 
         sx={{ 
-          backgroundColor: '#95cedc',
+          backgroundColor: '#9e9e9e',
         }}
         elevation={2}
         >
