@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
         container
         sx={{
           margin: '0 auto',
-          padding: '20px',     
+          padding: '20px 20px 40px',     
         }}
       >
         <Filters />

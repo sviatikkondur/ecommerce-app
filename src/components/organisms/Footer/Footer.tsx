@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Container, Typography } from '@mui/material';
 
 const FooterContainer = styled('footer')(({ theme }) => ({
-  backgroundColor: '#9e9e9e',
+  // backgroundColor: '#9e9e9e',
   color: theme.palette.getContrastText('#c5c5c5'), // Selects text color for the background
   height: 64,
   display: 'flex',
