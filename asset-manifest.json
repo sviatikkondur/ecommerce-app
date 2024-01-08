@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.d609b47b.css",
-    "main.js": "/static/js/main.b0129a45.js",
-    "static/media/Mont-Regular.ttf": "/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
-    "static/media/Mont-SemiBold.ttf": "/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
-    "static/media/Mont-Bold.ttf": "/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
-    "static/media/logo.png": "/static/media/logo.fc9ac513c45383042c5d.png",
-    "static/media/Shopping_bag_Cart.svg": "/static/media/Shopping_bag_Cart.df23e4fbb25ff3701b16978082a61721.svg",
-    "index.html": "/index.html",
-    "main.d609b47b.css.map": "/static/css/main.d609b47b.css.map",
-    "main.b0129a45.js.map": "/static/js/main.b0129a45.js.map"
+    "main.css": "/ecommerce-test-task/static/css/main.7cc2d745.css",
+    "main.js": "/ecommerce-test-task/static/js/main.1c17ef01.js",
+    "static/media/Mont-Regular.ttf": "/ecommerce-test-task/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
+    "static/media/Mont-SemiBold.ttf": "/ecommerce-test-task/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
+    "static/media/Mont-Bold.ttf": "/ecommerce-test-task/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
+    "static/media/logo.png": "/ecommerce-test-task/static/media/logo.fc9ac513c45383042c5d.png",
+    "static/media/Shopping_bag_Cart.svg": "/ecommerce-test-task/static/media/Shopping_bag_Cart.df23e4fbb25ff3701b16978082a61721.svg",
+    "index.html": "/ecommerce-test-task/index.html",
+    "main.7cc2d745.css.map": "/ecommerce-test-task/static/css/main.7cc2d745.css.map",
+    "main.1c17ef01.js.map": "/ecommerce-test-task/static/js/main.1c17ef01.js.map"
   },
   "entrypoints": [
-    "static/css/main.d609b47b.css",
-    "static/js/main.b0129a45.js"
+    "static/css/main.7cc2d745.css",
+    "static/js/main.1c17ef01.js"
   ]
 }
