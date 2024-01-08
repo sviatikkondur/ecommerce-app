@@ -2,7 +2,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import logo from '../../../static/icons/logo.png';
+import logo from '../../../static/icons/logo.svg';
 import cart from '../../../static/icons/Shopping_bag_Cart.svg';
 import { Link } from 'react-router-dom';
 import { SearchInput } from '../../atoms/Inputs/SearchInput';
@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
       <AppBar 
         position="static" 
         sx={{ 
-          backgroundColor: '#9e9e9e',
+          backgroundColor: '#272727',
         }}
         elevation={2}
         >
