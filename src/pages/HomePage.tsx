@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, useMediaQuery, useTheme } from '@mui/material';
 import { ProductList } from '../components/organisms/ProductList/ProductList';
 import { Filters } from '../components/organisms/Filters/Filters';
 import { useAppSelector } from '../hooks/useTypedSelector';
@@ -8,6 +8,8 @@ import { ErrorMessage } from '../components/atoms/ErrorMessage/ErrorMessage';
 
 export const HomePage: React.FC = () => {
   const { error } = useAppSelector(state => state.productsSlice);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Container 
@@ -36,10 +38,10 @@ export const HomePage: React.FC = () => {
       {!error && (
         <Grid
           container
+          height={isSmallScreen ? '' : '100%'}
           sx={{
             margin: '0 auto',
             padding: '20px 20px 40px',
-            height: '100%',
           }}
         >
           <Filters />
