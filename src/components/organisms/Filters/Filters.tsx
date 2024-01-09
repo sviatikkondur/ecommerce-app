@@ -1,66 +1,90 @@
-import { Box, Grid, useMediaQuery, useTheme } from '@mui/material'
-import React, { useEffect, useState, ChangeEvent } from 'react'
-import { getCategories } from '../../../api/categories';
+import { Box, CircularProgress, Grid, IconButton, useMediaQuery, useTheme } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { FilterTitle } from '../../atoms/Typography/FilterTitle';
 import { CategoriesRadio } from '../../atoms/Inputs/CategoriesRadio';
 import { CategoryTitle } from '../../atoms/Typography/CategoryTitle';
 import { SortTitle } from '../../atoms/Typography/SortTitle';
-import { SortBy } from '../../../types/SortBy';
 import { SortByInput } from '../../atoms/Inputs/SortByInput';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector';
+import { getCategories } from '../../../store/categories/categoriesSlice';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export const Filters: React.FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState('electronics');
-  const [sortBy, setSortBy] = useState(SortBy.Name);
+  const dispatch = useAppDispatch();
+  const [isBoxOpen, setIsBoxOpen] = useState(false);
+
+  const {
+    categories,
+    loading
+  } = useAppSelector(state => state.categoriesSlice);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSelectedCategory(e.target.value);
+  const handleToggleBox = () => {
+    setIsBoxOpen((prevIsBoxOpen: boolean) => !prevIsBoxOpen);
   };
-
-  const handleSortChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSortBy(e.target.value as SortBy);
-  };
-
-  useEffect(() => {
-    const loadCategories = async () => {
-      const data = await getCategories();
-
-      setCategories(data);
-    };
-
-    loadCategories();
-  }, []);
 
   return (
-    <Grid item sm={3} xs={12}>
-        <FilterTitle />
-
-      <Box
-        display={'flex'}
-        flexDirection={isSmallScreen ? 'row' : 'column'}
-        justifyContent={'center'}
+    <Grid 
+      item 
+      sm={3} 
+      xs={12} 
+      marginBottom={3}
+      display={loading ? 'flex' : 'unset'}
+      justifyContent={loading ? 'center' : ''}
+      alignItems={loading ? 'center' : ''}
       >
-        <Box marginTop={2}>
-          <CategoryTitle />
-          <CategoriesRadio 
-            categories={categories}
-            selectedCategory={selectedCategory}
-            handleChange={handleFilterChange}
-          /> 
-        </Box>
-      
-        <Box marginTop={2}>
-          <SortTitle />
+        {loading
+          ? <CircularProgress size={60}/>
+          : (
+            <>
+              <Box
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'space-between'}
+                border={isSmallScreen ? '1px solid #c0c0c0' : ''}
+                borderRadius={'10px'}
+                paddingLeft={isSmallScreen ? '16px' : ''}
+                onClick={handleToggleBox}
+              >
+                <FilterTitle />
 
-          <SortByInput 
-            sortBy={sortBy}
-            handleChange={handleSortChange}
-          /> 
-        </Box>
-      </Box>
+                {isSmallScreen && (
+                  <IconButton>
+                    {isBoxOpen ? <RemoveIcon fontSize='large'/> : <AddIcon fontSize='large'/>}
+                  </IconButton>
+                )}
+              </Box>
+
+            <Box
+              display={'flex'}
+              flexDirection={isSmallScreen ? 'row' : 'column'}
+              justifyContent={isSmallScreen ? 'space-around' : 'flex-start'}
+              height={(isSmallScreen && isBoxOpen) || !isSmallScreen ? '100%' : '0px'}
+              overflow={'hidden'}
+            >
+              <Box marginTop={2}>
+                <CategoryTitle />
+                <CategoriesRadio 
+                  categories={categories as string[]}
+                />
+              </Box>
+            
+              <Box marginTop={2}>
+                <SortTitle />
+
+                <SortByInput/> 
+              </Box>
+            </Box>
+            </>
+          )
+        }
     </Grid>
   )
 }

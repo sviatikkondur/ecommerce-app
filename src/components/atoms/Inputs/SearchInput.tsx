@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { InputBase, alpha, styled } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../../utils/searchHelper';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -44,8 +46,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const SearchInput: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newParams = getSearchWith(
+      searchParams, { query: e.target.value || null },
+    );
+
+    setSearchParams(newParams);
+  }
+
   return (
-    <Search>
+    <Search
+      onChange={(e: ChangeEvent<HTMLInputElement> ) => handleQueryChange(e)}
+    >
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>

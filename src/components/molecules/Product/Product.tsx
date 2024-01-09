@@ -17,7 +17,7 @@ export const Product:React.FC<Props> = ({product}) => {
     <Grid item key={product.title} xs={12} sm={6} md={4}>
             <Card 
               sx={{ 
-                maxWidth: 300, 
+                maxWidth: 340, 
                 margin: '0 auto', 
                 '@media (max-width: 400px)': { maxWidth: 240 }
               }}

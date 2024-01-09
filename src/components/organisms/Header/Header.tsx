@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
             <Box 
               component="img"
               sx={{
-                height: 56,
+                height: 45,
               }}
               alt='Logo'
               src={logo}

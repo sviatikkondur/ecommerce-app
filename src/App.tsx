@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <>
       <Header />
-      <div style={{flex: 1}}>
+      <div style={{flex: 1, display: 'flex', alignItems: 'stretch'}}>
         <Outlet />
       </div>
       <Footer />

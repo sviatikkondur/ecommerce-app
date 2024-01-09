@@ -11,6 +11,8 @@ export const ProductCategory: React.FC<Props> = ({category}) => {
       variant="body2" 
       color="textSecondary"
       marginTop={1}
+      title={category}
+      noWrap
     >
       Category: {category}
     </Typography>

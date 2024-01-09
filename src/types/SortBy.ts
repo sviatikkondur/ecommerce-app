@@ -1,4 +1,6 @@
 export enum SortBy {
-  Name = 'name',
-  Price = 'price',
+  NameAsc = 'A-Z',
+  NameDesc = 'Z-A',
+  PriceLowest = 'Price Low to High',
+  PriceHighest = 'Price High to Low',
 }
