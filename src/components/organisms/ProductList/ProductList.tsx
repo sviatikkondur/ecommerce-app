@@ -12,12 +12,12 @@ import { useSearchParams } from 'react-router-dom';
 export const ProductList: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [productsByCategory, setProductsByCategory] = useState<TProduct[]>([]);
-  const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
 
   const selectedCategory = searchParams.get('category') || 'all';
   const sortBy = searchParams.get('sort') || 'A-Z';
   const query = searchParams.get('query') || '';
+  const page = searchParams.get('page') || '1';
   
   const dispatch = useAppDispatch();
 
@@ -72,10 +72,6 @@ export const ProductList: React.FC = () => {
     }
   }, [products, selectedCategory, sortBy, query, page]);
 
-  const handlePageChange = (page: number) => {
-    setPage(page);
-  }
-
   const getVisibleProducts = (page: number) => {
     const itemsPerPage = 6;
     const startIndex = (page - 1) * itemsPerPage;
@@ -84,7 +80,7 @@ export const ProductList: React.FC = () => {
     return productsByCategory.slice(startIndex, endIndex);
   }
 
-  const visibleProducts = getVisibleProducts(page);
+  const visibleProducts = getVisibleProducts(+page);
 
   return (
     <Grid item sm={9} xs={12}>
@@ -114,7 +110,6 @@ export const ProductList: React.FC = () => {
             >
               <ProductsPagination 
                 count={count}
-                handlePageChange={handlePageChange}
               /> 
             </Box>
           )}
