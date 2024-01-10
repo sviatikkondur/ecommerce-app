@@ -3,9 +3,9 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../../../static/icons/logo.svg';
-import cart from '../../../static/icons/Shopping_bag_Cart.svg';
 import { Link } from 'react-router-dom';
 import { SearchInput } from '../../atoms/Inputs/SearchInput';
+import { CartIcon } from '../../atoms/Media/CartIcon';
 
 export const Header: React.FC = () => {
   return (
@@ -40,16 +40,7 @@ export const Header: React.FC = () => {
             gap={2}
           >
             <SearchInput />
-            <Link to='/cart'>
-              <Box 
-                component="img"
-                sx={{
-                  height: 20,
-                }}
-                alt='cart icon'
-                src={cart}
-              />
-            </Link>
+            <CartIcon />
           </Box>
         </Toolbar>
       </AppBar>
