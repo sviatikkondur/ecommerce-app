@@ -1,10 +1,10 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import { Box, Button, Grid, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import { ProductList } from '../components/organisms/ProductList/ProductList';
 import { Filters } from '../components/organisms/Filters/Filters';
 import { useAppSelector } from '../hooks/useTypedSelector';
-import { ErrorMessage } from '../components/atoms/ErrorMessage/ErrorMessage';
+import { Error } from '../components/molecules/Error/Error';
 
 export const HomePage: React.FC = () => {
   const { error } = useAppSelector(state => state.productsSlice);
@@ -16,25 +16,9 @@ export const HomePage: React.FC = () => {
       maxWidth="xl"
     >
       {error && (
-        <Box
-          height={'100%'}
-          display={'flex'}
-          flexDirection={'column'}
-          gap={3}
-          alignItems={'center'}
-          justifyContent={'center'}
-        >
-          <ErrorMessage message={error} />
-          <Button 
-            variant='contained' 
-            color='error'
-            onClick={() => window.location.reload()}
-          >
-            Try Again
-          </Button>
-        </Box>
-        )
-      }
+        <Error error={error} />
+      )}
+
       {!error && (
         <Grid
           container

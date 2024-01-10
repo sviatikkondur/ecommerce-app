@@ -16,32 +16,32 @@ export const Product:React.FC<Props> = ({product, handleToastOpen}) => {
 
   return (
     <Grid item key={product.title} xs={12} sm={6} md={4}>
-            <Card 
-              sx={{ 
-                maxWidth: 340, 
-                margin: '0 auto', 
-                '@media (max-width: 400px)': { maxWidth: 240 }
-              }}
-            >
-              <CardContent sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}
-              >
-                <ProductImage image={product.image} id={product.id} />
+      <Card 
+        sx={{ 
+          maxWidth: 340, 
+          margin: '0 auto', 
+          '@media (max-width: 400px)': { maxWidth: 240 }
+        }}
+      >
+        <CardContent sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+        >
+          <ProductImage image={product.image} id={product.id} />
 
-                <ProductName title={product.title} id={product.id} />
+          <ProductName title={product.title} id={product.id} />
 
-                <Divider sx={{ marginTop: 2 }} />
+          <Divider sx={{ marginTop: 2 }} />
 
-                <ProductCategory category={product.category} />
+          <ProductCategory category={product.category} />
 
-                <ProductPrice price={product.price} />
-                
-                <BuyButton product={product} handleToastOpen={handleToastOpen}/>
-              </CardContent>
-            </Card>
-          </Grid>
+          <ProductPrice price={product.price} />
+          
+          <BuyButton product={product} handleToastOpen={handleToastOpen}/>
+        </CardContent>
+      </Card>
+    </Grid>
   )
 }
