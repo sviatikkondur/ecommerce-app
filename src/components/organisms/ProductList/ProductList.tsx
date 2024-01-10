@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Grid } from '@mui/material'
+import { Alert, Box, CircularProgress, Grid, Slide, Snackbar } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Product } from '../../molecules/Product/Product';
 import { ProductsTitle } from '../../atoms/Typography/ProductsTitle';
@@ -13,12 +13,7 @@ export const ProductList: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [productsByCategory, setProductsByCategory] = useState<TProduct[]>([]);
   const [count, setCount] = useState(0);
-
-  const selectedCategory = searchParams.get('category') || 'all';
-  const sortBy = searchParams.get('sort') || 'A-Z';
-  const query = searchParams.get('query') || '';
-  const page = searchParams.get('page') || '1';
-  
+  const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
   const {
@@ -26,9 +21,26 @@ export const ProductList: React.FC = () => {
     loading,
   } = useAppSelector(state => state.productsSlice);
 
+  const selectedCategory = searchParams.get('category') || 'all';
+  const sortBy = searchParams.get('sort') || 'A-Z';
+  const query = searchParams.get('query') || '';
+  const page = searchParams.get('page') || '1';
+  
+  const handleToast = () => {
+    setOpen(true);
+  };
+
+  const handleToastClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProducts(selectedCategory));
   }, [dispatch]);
 
   useEffect(() => {
@@ -52,25 +64,21 @@ export const ProductList: React.FC = () => {
         }
       });
   
-      let updatedProductsByCategory;
-  
-      if (selectedCategory === 'all') {
-        updatedProductsByCategory = sortedProducts;
-      } else {
-        updatedProductsByCategory = sortedProducts.filter(product => product.category === selectedCategory);
-      }
-  
       if (query) {
-        const filteredProducts = updatedProductsByCategory
+        const filteredProducts = sortedProducts
           .filter(product => product.title.toLowerCase().includes(query.toLowerCase()));
         setProductsByCategory(filteredProducts);
         setCount(filteredProducts.length);
       } else {
-        setProductsByCategory(updatedProductsByCategory);
-        setCount(updatedProductsByCategory.length);
+        setProductsByCategory(sortedProducts);
+        setCount(sortedProducts.length);
       }
     }
-  }, [products, selectedCategory, sortBy, query, page]);
+  }, [products, sortBy, query, page]);
+
+  useEffect(() => {
+    dispatch(getProducts(selectedCategory));
+  }, [selectedCategory])
 
   const getVisibleProducts = (page: number) => {
     const itemsPerPage = 6;
@@ -99,7 +107,11 @@ export const ProductList: React.FC = () => {
           <>
           <Grid container spacing={2}>
             {visibleProducts.map(product => (
-              <Product key={product.id} product={product} />
+              <Product 
+                key={product.id} 
+                product={product} 
+                handleToastOpen={handleToast} 
+              />
             ))}
           </Grid>
 
@@ -121,6 +133,20 @@ export const ProductList: React.FC = () => {
             
           )
         } */}
+
+      <Snackbar 
+        open={open} 
+        autoHideDuration={2000} 
+        onClose={handleToastClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        TransitionComponent={(props) => (
+          <Slide {...props} direction="up" />
+        )}
+      >
+        <Alert onClose={handleToastClose} severity="success" sx={{ width: '100%' }}>
+          Product was added to cart!
+        </Alert>
+      </Snackbar>
       </Box>
     </Grid>
   )

@@ -2,15 +2,14 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { TProduct } from "../../types/Product";
 
-
-const STORE_API = 'https://fakestoreapi.com/products'
+const STORE_API = 'https://fakestoreapi.com/products';
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",
-  async (data, thunkApi) => {
+  async (category: string, thunkApi) => {
     try {
-      const response = await axios.get<TProduct[]>(STORE_API)
-
+      const apiUrl = category === 'all' ? STORE_API : `${STORE_API}/category/${category}`;
+      const response = await axios.get<TProduct[]>(apiUrl);
       return response.data;
     } catch (error: any) {
       return thunkApi.rejectWithValue(error.message);
@@ -28,7 +27,7 @@ const initialState = {
   loading: true,
   error: null,
   products: null,
-} as ProductsState
+} as ProductsState;
 
 const productsSlice = createSlice({
   name: "products",
@@ -45,8 +44,8 @@ const productsSlice = createSlice({
     .addCase(getProducts.rejected, (state, action: PayloadAction<any>) => {
       state.loading = false;
       state.error = action.payload;
-    })
+    });
   }
-})
+});
 
 export default productsSlice.reducer;

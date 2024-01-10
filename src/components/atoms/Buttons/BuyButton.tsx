@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = {
   product: TProduct;
+  handleToastOpen: () => void;
 }
 
-export const BuyButton: React.FC<Props> = ({ product }) => {
+export const BuyButton: React.FC<Props> = ({ product, handleToastOpen }) => {
   const { cart } = useAppSelector(state => state.cartSlice);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export const BuyButton: React.FC<Props> = ({ product }) => {
   const handleAddToCart = (product: TProduct) => {
     if (!isAdded) {
       dispatch(actions.add(product));
+      handleToastOpen();
     } else {
       navigate('/cart');
     }

@@ -9,9 +9,10 @@ import { BuyButton } from '../../atoms/Buttons/BuyButton';
 
 type Props = {
   product: TProduct
+  handleToastOpen: () => void
 };
 
-export const Product:React.FC<Props> = ({product}) => {
+export const Product:React.FC<Props> = ({product, handleToastOpen}) => {
 
   return (
     <Grid item key={product.title} xs={12} sm={6} md={4}>
@@ -38,7 +39,7 @@ export const Product:React.FC<Props> = ({product}) => {
 
                 <ProductPrice price={product.price} />
                 
-                <BuyButton product={product}/>
+                <BuyButton product={product} handleToastOpen={handleToastOpen}/>
               </CardContent>
             </Card>
           </Grid>
