@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {
   Unstable_NumberInput as BaseNumberInput,
-  NumberInputProps,
 } from '@mui/base/Unstable_NumberInput';
 import { styled } from '@mui/system';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { useAppDispatch } from '../../../hooks/useTypedSelector';
+import { actions } from '../../../store/cart/cartSlice';
+import { Button } from '@mui/material';
 
 type Props = {
   max: number,
@@ -14,8 +16,11 @@ type Props = {
 }
 
 export const ProductQuantity: React.FC<Props> = ({max, quantity, id}) => {
+  const dispatch = useAppDispatch();
+
   return (
     <BaseNumberInput
+      readOnly
       slots={{
         root: StyledInputRoot,
         input: StyledInput,
@@ -24,11 +29,31 @@ export const ProductQuantity: React.FC<Props> = ({max, quantity, id}) => {
       }}
       slotProps={{
         incrementButton: {
-          children: <AddIcon fontSize="small" />,
+          children: (
+            <Button 
+              disableRipple
+              sx={{
+                '&:hover': { backgroundColor: 'transparent' }
+              }} 
+              onClick={() => dispatch(actions.increase(id))}
+            >
+              <AddIcon fontSize="small" htmlColor='black' />
+            </Button>
+          ),
           className: 'increment',
         },
         decrementButton: {
-          children: <RemoveIcon fontSize="small" />,
+          children: (
+            <Button 
+              disableRipple 
+              sx={{
+                '&:hover': { backgroundColor: 'transparent' }
+              }} 
+              onClick={() => dispatch(actions.decrease(id))}
+            >
+              <RemoveIcon fontSize="small" htmlColor='black' />
+            </Button>
+          )
         },
       }}
       aria-label="Quantity Input" 
@@ -92,22 +117,8 @@ const StyledInput = styled('input')(
   padding: 10px 12px;
   outline: 0;
   min-width: 0;
-  width: 4rem;
+  width: 1rem;
   text-align: center;
-  tabIndex: -1;
-
-  &:hover {
-    border-color: ${blue[400]};
-  }
-
-  &:focus {
-    border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[700] : blue[200]};
-  }
-
-  &:focus-visible {
-    outline: 0;
-  }
 `,
 );
 

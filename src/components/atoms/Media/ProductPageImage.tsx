@@ -12,7 +12,6 @@ export const ProductPageImage: React.FC<Props> = ({image, alt}) => {
       <Box 
         component="img" 
         width={'100%'}
-        maxHeight={'78vh'}
         alt={alt}
         src={image}
       />

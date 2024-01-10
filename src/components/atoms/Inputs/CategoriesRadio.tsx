@@ -2,6 +2,7 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import React, { ChangeEvent } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../../utils/searchHelper';
+import lodash from 'lodash';
 
 type Props = {
   categories: string[],
@@ -37,7 +38,7 @@ export const CategoriesRadio: React.FC<Props> = ({
               key={category}
               value={category}
               control={<Radio />}
-              label={category}
+              label={lodash.capitalize(category)}
             />
           ))}
       </RadioGroup>

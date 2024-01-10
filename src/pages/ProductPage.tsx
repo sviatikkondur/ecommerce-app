@@ -48,7 +48,7 @@ export const ProductPage = () => {
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       {!isLoading && product && (
         <Grid
           container
