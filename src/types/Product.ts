@@ -10,3 +10,7 @@ export interface TProduct {
     count: number;
   };
 }
+
+export interface ProductWithAmount extends TProduct {
+  amount: number;
+}

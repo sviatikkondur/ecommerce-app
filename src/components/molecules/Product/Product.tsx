@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardMedia, Divider, Grid, Typography } from '@mui/material'
+import { Card, CardContent, Divider, Grid } from '@mui/material'
 import React from 'react'
 import { TProduct } from '../../../types/Product'
 import { ProductImage } from '../../atoms/Media/ProductImage';
@@ -38,7 +38,7 @@ export const Product:React.FC<Props> = ({product}) => {
 
                 <ProductPrice price={product.price} />
                 
-                <BuyButton />
+                <BuyButton product={product}/>
               </CardContent>
             </Card>
           </Grid>

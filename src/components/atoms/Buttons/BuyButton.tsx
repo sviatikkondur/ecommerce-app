@@ -1,7 +1,29 @@
 import { Button } from '@mui/material'
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useTypedSelector'
+import { TProduct } from '../../../types/Product';
+import { actions } from '../../../store/cart/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
-export const BuyButton: React.FC = () => {
+type Props = {
+  product: TProduct;
+}
+
+export const BuyButton: React.FC<Props> = ({ product }) => {
+  const { cart } = useAppSelector(state => state.cartSlice);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const isAdded = cart.find(item => +item.id === product.id);
+
+  const handleAddToCart = (product: TProduct) => {
+    if (!isAdded) {
+      dispatch(actions.add(product));
+    } else {
+      navigate('/cart');
+    }
+  };
+
   return (
     <Button 
       variant="contained"
@@ -13,8 +35,12 @@ export const BuyButton: React.FC = () => {
           bgcolor: '#595959',
         },
       }}
+      onClick={() => handleAddToCart(product)}
     >
-      Buy
+      {isAdded 
+        ? 'Added to cart'
+        : 'Buy'
+      }
     </Button>
 )
 }
