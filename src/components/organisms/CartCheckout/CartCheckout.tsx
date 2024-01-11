@@ -1,7 +1,10 @@
-import { Box, Button, Divider, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, Grid, useMediaQuery, useTheme } from '@mui/material'
 import React, { useMemo } from 'react'
 import { useAppSelector } from '../../../hooks/useTypedSelector';
 import { useNavigate } from 'react-router-dom';
+import { CheckoutButton } from '../../atoms/Buttons/CheckoutButton';
+import { TotalItemsMessage } from '../../atoms/Typography/TotalItemsMessage';
+import { TotalPrice } from '../../atoms/Typography/TotalPrice';
 
 export const CartCheckout = () => {
   const { cart } = useAppSelector(state => state.cartSlice);
@@ -11,10 +14,10 @@ export const CartCheckout = () => {
   const isTabletScreen = useMediaQuery(theme.breakpoints.down('lg'));
 
   const totalPrice = useMemo(() => {
-  return cart.reduce((acc, phone) => {
-    return acc + phone.price * phone.amount;
-  }, 0);
-}, [cart]);
+    return cart.reduce((acc, phone) => {
+      return acc + phone.price * phone.amount;
+    }, 0);
+  }, [cart]);
 
   const totalItems = useMemo(() => {
     return cart.reduce((acc, phone) => acc + phone.amount, 0);
@@ -42,22 +45,9 @@ export const CartCheckout = () => {
         border={'1px solid #c2c9d6'}
         borderRadius={2}
       >
-        <Typography
-          variant='h4'
-          fontWeight={700}
-        >
-          {totalPrice.toFixed(2)}$
-        </Typography>
+        <TotalPrice totalPrice={totalPrice}/>
 
-        <Typography
-          variant='body1'
-          marginTop={1}
-          sx={{
-            color: '#89939a'
-          }}
-        >
-          Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
-        </Typography>
+        <TotalItemsMessage totalItems={totalItems}/>
 
         <Divider
           sx={{
@@ -66,17 +56,7 @@ export const CartCheckout = () => {
           }}
         />
         
-        <Button
-          variant='contained'
-          size='large'
-          sx={{
-            width: '100%',
-            marginTop: 3
-          }}
-          onClick={handleCheckoutClick}
-        >
-          Checkout
-        </Button>
+        <CheckoutButton handleCheckoutClick={handleCheckoutClick}/>
       </Box>
     </Grid>
   )

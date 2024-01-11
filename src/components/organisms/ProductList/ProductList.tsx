@@ -127,12 +127,6 @@ export const ProductList: React.FC = () => {
           )}
         </>
         )}
-        {/* {visibleProducts.length === 0 && !loading
-          ? <p style={{marginTop: '20px'}}>There are no products matching the current search criteria</p>
-          : (
-            
-          )
-        } */}
 
       <Snackbar 
         open={open} 
