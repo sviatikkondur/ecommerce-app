@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/studiopresto-test-task/static/css/main.c56b29eb.css",
-    "main.js": "/studiopresto-test-task/static/js/main.9d923d73.js",
+    "main.js": "/studiopresto-test-task/static/js/main.2f5458a7.js",
     "static/media/Mont-Regular.ttf": "/studiopresto-test-task/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/studiopresto-test-task/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/Mont-Bold.ttf": "/studiopresto-test-task/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
-    "static/media/Shopping_bag_Cart.svg": "/studiopresto-test-task/static/media/Shopping_bag_Cart.192d36ef80eac798e8a3baf4451023f3.svg",
-    "static/media/logo.svg": "/studiopresto-test-task/static/media/logo.478b1af4f03794cef35cf684fbf60dbf.svg",
+    "static/media/Shopping_bag_Cart.svg": "/studiopresto-test-task/static/media/Shopping_bag_Cart.1cc78a0fe9a8706892af17c9c3e7d4f7.svg",
+    "static/media/logo.svg": "/studiopresto-test-task/static/media/logo.55083cb486b6ede5ef335d53bc7c76b5.svg",
     "index.html": "/studiopresto-test-task/index.html",
     "main.c56b29eb.css.map": "/studiopresto-test-task/static/css/main.c56b29eb.css.map",
-    "main.9d923d73.js.map": "/studiopresto-test-task/static/js/main.9d923d73.js.map"
+    "main.2f5458a7.js.map": "/studiopresto-test-task/static/js/main.2f5458a7.js.map"
   },
   "entrypoints": [
     "static/css/main.c56b29eb.css",
-    "static/js/main.9d923d73.js"
+    "static/js/main.2f5458a7.js"
   ]
 }
