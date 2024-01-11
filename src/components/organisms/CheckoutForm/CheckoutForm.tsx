@@ -53,6 +53,8 @@ export const CheckoutForm: React.FC<Props> = ({ handleSuccess }) => {
         products: cart
       };
 
+      handleSuccess();
+      
       try {
         const emailjsServiceId = 'service_playw7r';
         const emailjsTemplateIdManager = 'template_c1tepye';
@@ -80,7 +82,6 @@ export const CheckoutForm: React.FC<Props> = ({ handleSuccess }) => {
 
       console.log(order);
       dispatch(actions.clear());
-      handleSuccess();
     },
   });
 
