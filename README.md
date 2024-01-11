@@ -1,140 +1,60 @@
-<h1 align="center">New React App</h1>
+<h1 align="center">StudioPresto Test Task - ECommerce</h1>
 
 <br />
 
-This is a blank README file that you can customize at your needs.\
-Describe your project, how it works and how to contribute to it.
+Welcome to the StudioPresto Test Task - ECommerce Project! 🛒
+
+This project is a delightful ECommerce application developed with React, Redux, and other fantastic libraries. It allows users to explore and purchase products. Let's dive into the key libraries and dependencies used to build this application!
 
 <br />
 
-# 🚀 Available Scripts
+# 🚀 Getting Started
 
 In the project directory, you can run:
 
-<br />
+```
+npm install
+```
 
-## ⚡️ start
-
+# ⚡️ start
 ```
 npm start
 ```
-
-or
-
-```
-yarn start
-```
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
 
 <br />
 
-## 🧪 test
-
+# 🧪 test
 ```
 npm test
 ```
-
-or
-
-```
-yarn test
-```
-
 Launches the test runner in the interactive watch mode.
 
-<br />
-
-## 🦾 build
+# 🦾 build
 
 ```
 npm build
 ```
 
-or
-
-```
-yarn build
-```
-
-Builds the app for production to the `build` folder.\
+Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.
+The build is minified, and the filenames include the hashes.
 
 <br />
 
-## 🧶 lint
+# ✨ Libraries Used
 
-```
-npm lint
-```
-
-or
-
-```
-yarn lint
-```
-
-Creates a `.eslintcache` file in which ESLint cache is stored. Running this command can dramatically improve ESLint's running time by ensuring that only changed files are linted.
-
-<br />
-
-## 🎯 format
-
-```
-npm format
-```
-
-or
-
-```
-yarn format
-```
-
-Checks if your files are formatted. This command will output a human-friendly message and a list of unformatted files, if any.
-
-<br />
-
-# 🧬 Project structure
-
-This is the structure of the files in the project:
-
-```sh
-    │
-    ├── public                  # public files (favicon, .htaccess, manifest, ...)
-    ├── src                     # source files
-    │   ├── components
-    │   ├── pages
-    │   ├── resources           # images, constants and other static resources
-    │   ├── store               # Redux store
-    │   │   ├── actions         # store's actions
-    │   │   └── reducers        # store's reducers
-    │   ├── styles
-    │   ├── tests               # all test files
-    │   ├── types               # data interfaces
-    │   ├── utility             # utilities functions and custom components
-    │   ├── App.tsx
-    │   ├── index.tsx
-    │   ├── react-app-env.d.ts
-    │   ├── RootComponent.tsx   # React component with all the routes
-    │   ├── serviceWorker.ts
-    │   └── setupTests.ts
-    ├── .eslintrc.js
-    ├── .gitignore
-    ├── .prettierrc
-    ├── package.json
-    ├── README.md
-    └── tsconfig.json
-```
-
-# 📖 Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#
-
-<p align="center">Bootstrapped with Create React App.</p>
+- **React** (`^18.2.0`): A JavaScript library for building user interfaces. React is used for creating a dynamic and interactive shopping experience.
+- **Redux Toolkit** (`^1.9.7`): State management library for React applications, ensuring a predictable state container.
+- **React Router DOM** (`^6.21.1`): Declarative routing for React.js, enabling seamless navigation in your eCommerce app.
+- **Axios** (`^1.6.4`): A promise-based HTTP client for making API requests, facilitating smooth communication with your backend.
+- **Formik** (`^2.4.5`): A form library for React, simplifying the process of building and handling forms in your eCommerce application.
+- **Yup** (`^1.3.3`): A JavaScript schema builder for validation, ensuring data integrity in your forms.
+- **Material-UI** (`^5.15.3`): A popular React UI framework for creating beautiful and responsive user interfaces.
+- **Lodash** (`^4.17.21`): A utility library for working with arrays, objects, and more, enhancing the efficiency of your code.
+- **Moment.js** (`^2.30.1`): A JavaScript date library for parsing, validating, manipulating, and formatting dates, crucial for managing time-related data.
+- **Sass** (`^1.69.7`) and **Sass Loader** (`^13.3.3`): Enhance your styling capabilities with Sass, a popular CSS preprocessor.
+- **Eslint** (`^5.1.2`) and **Prettier** (`^2.3.2`): Ensure code quality and maintainability with Eslint for linting and Prettier for code formatting.
+- **GH Pages** (`^6.1.1`): Deploy your eCommerce pet project easily to GitHub Pages.
