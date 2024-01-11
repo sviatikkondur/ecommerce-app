@@ -1,9 +1,11 @@
 import { Box, Button, Divider, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useMemo } from 'react'
 import { useAppSelector } from '../../../hooks/useTypedSelector';
+import { useNavigate } from 'react-router-dom';
 
 export const CartCheckout = () => {
   const { cart } = useAppSelector(state => state.cartSlice);
+  const navigate = useNavigate();
 
   const theme = useTheme();
   const isTabletScreen = useMediaQuery(theme.breakpoints.down('lg'));
@@ -17,6 +19,12 @@ export const CartCheckout = () => {
   const totalItems = useMemo(() => {
     return cart.reduce((acc, phone) => acc + phone.amount, 0);
   }, [cart]);
+
+
+  const handleCheckoutClick = () => {
+    navigate('/cart/checkout', { replace: true });
+  };
+
 
   return (
     <Grid 
@@ -65,6 +73,7 @@ export const CartCheckout = () => {
             width: '100%',
             marginTop: 3
           }}
+          onClick={handleCheckoutClick}
         >
           Checkout
         </Button>

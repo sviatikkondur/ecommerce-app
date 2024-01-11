@@ -18,7 +18,7 @@ export const CartPage = () => {
           <CartTitle />
 
           <Grid container>
-            <CartProductList />
+            <CartProductList checkout={false} />
             <CartCheckout />
           </Grid>
         </>

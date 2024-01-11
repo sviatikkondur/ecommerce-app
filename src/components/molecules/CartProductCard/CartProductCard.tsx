@@ -10,9 +10,10 @@ import { actions } from '../../../store/cart/cartSlice';
 
 type Props = {
   product: ProductWithAmount
+  checkout: boolean
 }
 
-export const CartProductCard: React.FC<Props> = ({product}) => {
+export const CartProductCard: React.FC<Props> = ({product, checkout}) => {
   const dispatch = useAppDispatch();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -33,16 +34,19 @@ export const CartProductCard: React.FC<Props> = ({product}) => {
         display={'flex'}
         alignItems={'center'}
         maxWidth={isSmallScreen ? '100%' : '60%'}
+        paddingLeft={checkout ? '20px' : '0'}
       >
-        <Button 
-          color='error'
-          onClick={() => dispatch(actions.remove(product.id))}
-          sx={{
-            '&:hover': { backgroundColor: 'transparent' }
-          }} 
-        >
-          <CloseIcon />
-        </Button>
+        {!checkout && (
+          <Button 
+            color='error'
+            onClick={() => dispatch(actions.remove(product.id))}
+            sx={{
+              '&:hover': { backgroundColor: 'transparent' }
+            }} 
+          >
+            <CloseIcon />
+          </Button>
+        )}
         <CartProductImage image={product.image} />
         <CartProductTitle title={product.title} />
       </Box>
@@ -53,11 +57,13 @@ export const CartProductCard: React.FC<Props> = ({product}) => {
           gap={4}
           justifyContent={'space-between'}
         >
-          <ProductQuantity 
-            id={product.id}
-            max={product.rating.count}
-            quantity={product.amount}
-          />
+          {!checkout && (
+            <ProductQuantity 
+              id={product.id}
+              max={product.rating.count}
+              quantity={product.amount}
+            />
+          )}
           <Typography
             width={70}
             variant='h6'

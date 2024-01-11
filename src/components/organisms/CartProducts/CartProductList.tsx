@@ -3,7 +3,11 @@ import React from 'react'
 import { useAppSelector } from '../../../hooks/useTypedSelector'
 import { CartProductCard } from '../../molecules/CartProductCard/CartProductCard';
 
-export const CartProductList = () => {
+type Props = {
+  checkout: boolean,
+}
+
+export const CartProductList: React.FC<Props> = ({ checkout }) => {
   const { cart } = useAppSelector(state => state.cartSlice);
 
   return (
@@ -16,10 +20,10 @@ export const CartProductList = () => {
         display={'flex'}
         flexDirection={'column'}
         gap={2}
-        marginTop={3}
+        marginTop={checkout ? 0 : 3}
       >
         {cart.map(product => (
-          <CartProductCard key={product.id} product={product}/>
+          <CartProductCard key={product.id} product={product} checkout={checkout}/>
         ))}
       </Box>
     </Grid>
