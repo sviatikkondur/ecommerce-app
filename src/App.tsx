@@ -1,5 +1,4 @@
-import './styles/reset.scss';
-import './styles/typography.scss';
+import './styles/main.scss';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './components/organisms/Header/Header';

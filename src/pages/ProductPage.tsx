@@ -22,13 +22,15 @@ export const ProductPage = () => {
 
   useEffect(() => {
     const loadProduct = async () => {
-      try {
-        const data = await getProduct(id as string);
-        setIsLoading(false);
-
-        setProduct(data);
-      } catch (error) {
-        setError(true);
+      if (id) {
+        try {
+          const data = await getProduct(id);
+          setIsLoading(false);
+  
+          setProduct(data);
+        } catch (error) {
+          setError(true);
+        }
       }
     }
 
