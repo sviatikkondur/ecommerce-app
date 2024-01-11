@@ -55,15 +55,22 @@ export const CheckoutForm: React.FC<Props> = ({ handleSuccess }) => {
 
       try {
         const emailjsServiceId = 'service_playw7r';
-        const emailjsTemplateId = 'template_c1tepye';
+        const emailjsTemplateIdManager = 'template_c1tepye';
+        const emailjsTemplateIdBuyer = 'template_dvr9zan';
         const emailjsUserId = '2JiIu5NLAB8j-7b_T';
 
-        await emailjs.send(emailjsServiceId, emailjsTemplateId, {
+        await emailjs.send(emailjsServiceId, emailjsTemplateIdManager, {
           manager_name: 'Sales manager',
           order_number: order.orderNumber,
           buyer_name: values.name,
           buyer_email: values.email,
           buyer_phone: values.phone,
+        }, emailjsUserId);
+
+        await emailjs.send(emailjsServiceId, emailjsTemplateIdBuyer, {
+          order_number: order.orderNumber,
+          buyer_name: values.name,
+          buyer_email: values.email,
         }, emailjsUserId);
 
         console.log('Email sent successfully!');
