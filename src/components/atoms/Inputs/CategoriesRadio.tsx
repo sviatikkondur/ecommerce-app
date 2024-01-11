@@ -18,10 +18,10 @@ export const CategoriesRadio: React.FC<Props> = ({
     const selectedCategory = e.target.value;
 
     if (selectedCategory === 'all') {
-      const newParams = getSearchWith(searchParams, { category: null });
+      const newParams = getSearchWith(searchParams, { category: null, page: null });
       setSearchParams(newParams);
     } else {
-      const newParams = getSearchWith(searchParams, { category: selectedCategory });
+      const newParams = getSearchWith(searchParams, { category: selectedCategory, page: null });
       setSearchParams(newParams);
     }
   };
