@@ -2,6 +2,11 @@
 
 <br />
 
+# DEMO
+[DEMO LINK](https://sviatikkondur.github.io/studiopresto-test-task/#/)
+
+<br />
+
 Welcome to the StudioPresto Test Task - ECommerce Project! 🛒
 
 This project is a delightful ECommerce application developed with React, Redux, and other fantastic libraries. It allows users to explore and purchase products. Let's dive into the key libraries and dependencies used to build this application!
