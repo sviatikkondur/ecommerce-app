@@ -1,55 +1,52 @@
 import { TProduct } from "../types/Product";
 
-
 export const localClient = {
-  read: (key: string) => {
+  read: <T>(key: string): T | null => {
     const data = window.localStorage.getItem(key);
 
     try {
-      return data && JSON.parse(data);
+      return data ? JSON.parse(data) : null;
     } catch (error) {
       return null;
     }
   },
 
-  write: (key: string, data: unknown) => {
+  write: <T>(key: string, data: T): void => {
     window.localStorage.setItem(key, JSON.stringify(data, null, 2));
   },
 
-  add: (key: string, data: unknown) => {
-    const existingData = localClient.read(key);
+  add: <T>(key: string, data: T): void => {
+    const existingData = localClient.read<T[]>(key) || [];
 
     existingData.push(data);
     window.localStorage.setItem(key, JSON.stringify(existingData, null, 2));
   },
 
-  update: (key: string, data: TProduct) => {
-    const existingData = localClient.read(key);
-    const newData = existingData.map((item: TProduct) => {
-      return item.id === data.id ? data : item;
-    });
+  update: <T extends TProduct>(key: string, data: T): void => {
+    const existingData = localClient.read<T[]>(key) || [];
+    const newData = existingData.map((item) => (item.id === data.id ? data : item));
 
     window.localStorage.setItem(key, JSON.stringify(newData, null, 2));
   },
 
-  delete: (key: string, id: number) => {
-    const existingData = localClient.read(key);
-    const newData = existingData.filter((item: TProduct) => item.id !== id);
+  delete: <T extends TProduct>(key: string, id: number): void => {
+    const existingData = localClient.read<T[]>(key) || [];
+    const newData = existingData.filter((item) => item.id !== id);
 
     window.localStorage.setItem(key, JSON.stringify(newData, null, 2));
   },
 
-  find: (key: string, id: number) => {
-    const existingData: TProduct[] = localClient.read(key);
+  find: <T extends TProduct>(key: string, id: number): boolean => {
+    const existingData = localClient.read<T[]>(key) || [];
 
-    return !!existingData.find((item: TProduct) => item.id === id);
+    return !!existingData.find((item) => item.id === id);
   },
 
-  init: (key: string, initialData: unknown) => {
-    if (!localClient.read(key)) {
+  init: <T>(key: string, initialData: T): T => {
+    if (!localClient.read<T>(key)) {
       localClient.write(key, initialData);
     }
 
-    return localClient.read(key);
+    return localClient.read<T>(key) || initialData;
   },
 };
