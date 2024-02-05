@@ -1,4 +1,4 @@
-<h1 align="center">StudioPresto Test Task - ECommerce</h1>
+<h1 align="center">ECommerce - Pet Project</h1>
 
 <br />
 
@@ -7,7 +7,7 @@
 
 <br />
 
-Welcome to the StudioPresto Test Task - ECommerce Project! 🛒
+Welcome to the ECommerce Pet Project! 🛒
 
 This project is a delightful ECommerce application developed with React, Redux, and other fantastic libraries. It allows users to explore and purchase products. Let's dive into the key libraries and dependencies used to build this application!
 
